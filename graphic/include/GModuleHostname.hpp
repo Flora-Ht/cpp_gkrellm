@@ -15,11 +15,16 @@
 #ifndef GMODULEHOSTNAME_H_
 # define GMODULEHOSTNAME_H_
 
+# include <QLabel>
+# include <QVBoxLayout>
 # include "GModule.hpp"
+# include "ModuleHostname.hpp"
 
 class GModuleHostname : public GModule {
 
 	private:
+		QLabel *_labelHost;
+		QLabel *_labelUser;
 
 	protected:
 
@@ -27,7 +32,7 @@ class GModuleHostname : public GModule {
 		GModuleHostname(QWidget *, int x, int y);
 		GModuleHostname(GModuleHostname const &);
 		GModuleHostname &operator=(GModuleHostname const &);
-		~GModuleHostname();
+		virtual ~GModuleHostname();
 };
 
 #endif /* !GMODULEHOSTNAME_H_ */

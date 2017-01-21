@@ -21,7 +21,8 @@
 # include <QStatusBar>
 # include <QWidget>
 
-# include "Module.hpp"
+# include "GModule.hpp"
+# include "GModuleHostname.hpp"
 
 class QStatusBar;
 

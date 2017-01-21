@@ -13,7 +13,7 @@ CXX 		= g++
 INCDIR		:= include
 INCMODULEDIR	:= ../libmodule/include/
 SRCDIR		:= source
-LDFLAGS		:= -L.. -lmodule -lncurses
+LDFLAGS		:= -L.. -lmodule
 
 CXXFLAGS	+= -g -Wall -Werror -Wextra -Wfatal-errors -std=c++11 -fPIC
 CXXFLAGS	+= -I$(INCDIR) -I/usr/include/qt -I$(INCMODULEDIR)
@@ -23,10 +23,12 @@ LIBS		= $(foreach lib,$(QT_LIBS),-lQt5$(lib))
 
 SOURCES		= main.cpp \
 			  MainWindow.cpp \
-			  Module.cpp
+			  GModule.cpp \
+			  GModuleHostname.cpp
 
 HPPFILES	= MainWindow.hpp \
-			  Module.hpp
+			  GModule.hpp \
+			  GModuleHostname.hpp
 
 SOURCES 	:= $(addprefix $(SRCDIR)/, $(SOURCES))
 HPPFILES	:= $(addprefix $(INCDIR)/, $(HPPFILES))
@@ -37,7 +39,7 @@ OFILES	=	$(SOURCES:.cpp=.oxx) \
 all: $(NAME)
 
 $(NAME): $(OFILES)
-	$(CXX) $(OFILES) $(LIBS) -o $@ $(CXXFLAGS)
+	$(CXX) $(OFILES) $(LIBS) -o $@ $(CXXFLAGS) $(LDFLAGS)
 	cp $(NAME) ../$(NAME)
 
 clean:

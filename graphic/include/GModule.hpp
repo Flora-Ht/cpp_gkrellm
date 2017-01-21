@@ -16,6 +16,8 @@
 # define MODULE_H_
 
 # include <QKeyEvent>
+# include <QEvent>
+# include <QWindowStateChangeEvent> 
 # include <QHBoxLayout>
 # include <QWidget>
 # include <QDockWidget>
@@ -26,22 +28,24 @@
 class GModule : public QDockWidget {
 
 	private:
-		QWidget *_widget;
-		IMonitorModule *monitorModule;
 
 	protected:
+		QWidget *_widget;
+		IMonitorModule *_monitorModule;
+		QString _name;
 		int _x;
 		int _y;
 		int _width;
 		int _height;
 
 	public:
-		GModule(QString const &, QWidget *, int, int);
+		GModule(QString const &, QWidget *, int, int, int, int);
 		GModule(GModule const &);
 		GModule &operator=(GModule const &);
 		virtual ~GModule();
 
 		virtual void keyPressEvent(QKeyEvent *) override;
+		// virtual bool event(QEvent *) override;
 };
 
 #endif /* !MODULE_H_ */
