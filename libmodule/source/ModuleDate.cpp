@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 17:58:25 2017 Benjamin Grange
-// Last update Sat Jan 21 19:25:02 2017 Benjamin Grange
+// Last update Sat Jan 21 19:35:37 2017 Benjamin Grange
 //
 
 #include <sstream>
@@ -16,6 +16,12 @@
 #include "ModuleDate.hpp"
 
 ModuleDate::ModuleDate()
+: _day(0)
+, _month(0)
+, _year(0)
+, _hour(0)
+, _minute(0)
+, _sec(0)
 {}
 
 ModuleDate::~ModuleDate() {}
