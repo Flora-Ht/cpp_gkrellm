@@ -40,7 +40,7 @@ GModuleHostname::GModuleHostname(QWidget *parent, int x, int y)
 		
 		_widget->resize(_width, _height);
 		show();
-		move(2, 40);
+		move(x, y);
 	}
 
 GModuleHostname::~GModuleHostname() {

@@ -23,14 +23,18 @@ LIBS		= $(foreach lib,$(QT_LIBS),-lQt5$(lib))
 
 SOURCES		= main.cpp \
 			  MainWindow.cpp \
+			  SideBar.cpp \
 			  GModule.cpp \
 			  GModuleHostname.cpp \
-			  GModuleDate.cpp
+			  GModuleDate.cpp \
+			  GModuleOS.cpp
 
 HPPFILES	= MainWindow.hpp \
+			  SideBar.hpp \
 			  GModule.hpp \
 			  GModuleHostname.hpp \
-			  GModuleDate.hpp
+			  GModuleDate.hpp \
+			  GModuleOS.hpp
 
 SOURCES 	:= $(addprefix $(SRCDIR)/, $(SOURCES))
 HPPFILES	:= $(addprefix $(INCDIR)/, $(HPPFILES))

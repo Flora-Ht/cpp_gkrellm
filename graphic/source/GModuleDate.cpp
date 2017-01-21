@@ -43,8 +43,16 @@ GModuleDate::GModuleDate(QWidget *parent, int x, int y)
 		
 		_widget->resize(_width, _height);
 		show();
-		move(2, 140);
+		move(x, y);
 	}
+
+GModuleDate::~GModuleDate() {
+
+	delete _date;
+	delete _time;
+}
+
+/* ===================================================================================== */
 
 void GModuleDate::updateModuleTime() {
 
@@ -76,10 +84,4 @@ void GModuleDate::updateModuleTime() {
 		repaint();
 		show();
 	}
-}
-
-GModuleDate::~GModuleDate() {
-
-	delete _date;
-	delete _time;
 }

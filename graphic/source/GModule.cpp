@@ -16,7 +16,7 @@
 
 GModule::GModule(QString const &name, QWidget *parent, int x, int y, int width, int height)
 	: QDockWidget(name, parent, Qt::Dialog | Qt::CustomizeWindowHint),
-	_widget(new QWidget(this, Qt::Window)), _monitorModule(0),
+	_widget(new QWidget(this, Qt::Window)), _monitorModule(nullptr),
 	_name(name), _x(x), _y(y), _width(width), _height(height), _closed(false) {
 
 		setFocusPolicy(Qt::StrongFocus);

@@ -15,15 +15,18 @@
 #ifndef MAINWINDOW_H_
 # define MAINWINDOW_H_
 
+# include <iostream>
 # include <QKeyEvent>
 # include <QMainWindow>
 # include <QLabel>
 # include <QStatusBar>
 # include <QWidget>
 
+# include "SideBar.hpp"
 # include "GModule.hpp"
 # include "GModuleHostname.hpp"
 # include "GModuleDate.hpp"
+# include "GModuleOS.hpp"
 
 class QStatusBar;
 
@@ -41,6 +44,8 @@ class MainWindow : public QMainWindow {
 		virtual ~MainWindow();
 
 		virtual void keyPressEvent(QKeyEvent *) override;
+		
+		void addNewModule(GModule *);
 };
 
 #endif /* !MAINWINDOW_H_ */

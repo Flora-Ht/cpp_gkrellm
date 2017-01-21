@@ -22,9 +22,11 @@ MainWindow::MainWindow()
 
 		statusBar();
 		statusBar()->addPermanentWidget(new QLabel("MyGkrellm ready to use."));
-
-		addDockWidget(Qt::LeftDockWidgetArea, new GModuleHostname(this, 2, 0));
-		addDockWidget(Qt::RightDockWidgetArea, new GModuleDate(this, 1620, 0));
+		
+		addDockWidget(Qt::LeftDockWidgetArea, new SideBar(this, this));
+		addDockWidget(Qt::LeftDockWidgetArea, new GModuleHostname(this, 2, 40));
+		addDockWidget(Qt::RightDockWidgetArea, new GModuleDate(this, 2, 140));
+		addDockWidget(Qt::RightDockWidgetArea, new GModuleOS(this, 2, 240));
 	}
 
 MainWindow::~MainWindow() {
@@ -35,4 +37,9 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
 		close();
 	}
 	QMainWindow::keyPressEvent(event);
+}
+
+void MainWindow::addNewModule(GModule *mod) {
+	
+	addDockWidget(Qt::LeftDockWidgetArea, mod);
 }
