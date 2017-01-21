@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Module.cpp
+ *       Filename:  GModule.cpp
  *
  *    Description:
  *
@@ -12,28 +12,27 @@
  * =====================================================================================
  */
 
-#include "Module.hpp"
+#include "GModule.hpp"
 
-Module::Module(QString const &name, QWidget *parent, int x, int y, int width, int height)
+GModule::GModule(QString const &name, QWidget *parent, int x, int y)
 	: QDockWidget(name, parent, Qt::Window) {
 
 		setFocusPolicy(Qt::StrongFocus);
 
+		_x = x;
+		_y = y;
 		_widget = new QWidget(this, Qt::Dialog);
 		_widget->setWindowTitle(name);
-		setWidget(_widget);
-		_widget->resize(width, height);
-		_widget->move(x, y);
 	}
 
-Module::~Module() {
+GModule::~GModule() {
 	
 	delete _widget;
 }
 
 /* ===================================================================================== */
 
-void Module::keyPressEvent(QKeyEvent *event) {
+void GModule::keyPressEvent(QKeyEvent *event) {
 	if (event->key() == Qt::Key_A) {
 		close();
 	}

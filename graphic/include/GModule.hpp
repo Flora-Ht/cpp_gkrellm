@@ -21,20 +21,25 @@
 # include <QDockWidget>
 # include <QString>
 
-# include <iostream>
+# include "IMonitorModule.hpp"
 
-class Module : public QDockWidget {
+class GModule : public QDockWidget {
 
 	private:
 		QWidget *_widget;
+		IMonitorModule *monitorModule;
 
 	protected:
+		int _x;
+		int _y;
+		int _width;
+		int _height;
 
 	public:
-		Module(QString const &, QWidget *, int, int, int, int);
-		Module(Module const &);
-		Module &operator=(Module const &);
-		virtual ~Module();
+		GModule(QString const &, QWidget *, int, int);
+		GModule(GModule const &);
+		GModule &operator=(GModule const &);
+		virtual ~GModule();
 
 		virtual void keyPressEvent(QKeyEvent *) override;
 };

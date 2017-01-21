@@ -1,8 +1,11 @@
 *.o
 *~
-#*#
-.#*
+\#*#
+.\#*
 *.gch
 test*
 a.out
 *.sh
+my_gkrellm
+my_gkrellmg
+libmodule.a

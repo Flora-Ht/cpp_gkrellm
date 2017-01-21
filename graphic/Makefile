@@ -4,24 +4,32 @@
 #
 #---------------------------------------------------------------------------------
 
-NAME		= graphic
+NAME		:= my_grekllmg
 
 QT_LIBS		= Core Gui Widgets
 
 CXX 		= g++
 
+INCDIR		:= include
+INCMODULEDIR	:= ../libmodule/include/
+SRCDIR		:= source
+LDFLAGS		:= -L.. -lmodule -lncurses
+
 CXXFLAGS	+= -g -Wall -Werror -Wextra -Wfatal-errors -std=c++11 -fPIC
-CXXFLAGS	+= -Iinclude/ -I/usr/include/qt
+CXXFLAGS	+= -I$(INCDIR) -I/usr/include/qt -I$(INCMODULEDIR)
 CXXFLAGS	+= $(foreach lib, $(QT_LIBS), -I/usr/include/qt/Qt$(lib))
 LIBS		= $(foreach lib,$(QT_LIBS),-lQt5$(lib))
 
 
-SOURCES		= source/main.cpp \
-			  source/MainWindow.cpp \
-			  source/Module.cpp
+SOURCES		= main.cpp \
+			  MainWindow.cpp \
+			  Module.cpp
 
-HPPFILES	= include/MainWindow.hpp \
-			  include/Module.hpp
+HPPFILES	= MainWindow.hpp \
+			  Module.hpp
+
+SOURCES 	:= $(addprefix $(SRCDIR)/, $(SOURCES))
+HPPFILES	:= $(addprefix $(INCDIR)/, $(HPPFILES))
 
 OFILES	=	$(SOURCES:.cpp=.oxx) \
 	$(HPPFILES:.hpp=.moc.o)
@@ -29,26 +37,34 @@ OFILES	=	$(SOURCES:.cpp=.oxx) \
 all: $(NAME)
 
 $(NAME): $(OFILES)
-	@$(CXX) $(OFILES) $(LIBS) -o $@ $(CXXFLAGS)
+	$(CXX) $(OFILES) $(LIBS) -o $@ $(CXXFLAGS)
+	cp $(NAME) ../$(NAME)
 
 clean:
-	@rm -rf $(OFILES)
-	@rm -rf include/*.moc.cpp
+	echo "Cleaning .o/.moc files..."
+	rm -rf $(OFILES)
+	rm -rf $(INCDIR)/*.moc.cpp
 
 fclean: clean
-	@rm -rf $(NAME)
+	echo "Cleaning executable..."
+	rm -rf $(NAME)
+	rm -rf ../$(NAME)
 
 re: fclean all
+	
+run: $(NAME)
+	./$(NAME)
 
+apply_debug:
+		$(eval DEBUG_FLAG := -D_DEBUG)
+		
+debug:		apply_debug $(NAME)
+	
 %.oxx: %.cpp
-	@echo "=>" $(notdir $<)
-	@$(CXX) -c $< -o $@ $(CXXFLAGS) $(INCLUDE)
+	echo "=>" $(notdir $<)
+	$(CXX) -c $< -o $@ $(CXXFLAGS) $(INCLUDE)
 
 %.moc.cpp: %.hpp
-	@echo "=>" $(notdir $<)
-	@moc $< $(DEFINES) $(INCLUDE) -o $@ --no-notes
-
-%.moc.cpp: %.h
 	@echo "=>" $(notdir $<)
 	@moc $< $(DEFINES) $(INCLUDE) -o $@ --no-notes
 
@@ -58,4 +74,5 @@ re: fclean all
 
 .PRECIOUS: %.moc.cpp
 
-.PHONY: all $(OUT) clean fclean re
+.PHONY: all clean fclean re run debug
+.SILENT: all $(NAME) clean fclean re run debug $(OFILES)
