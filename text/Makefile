@@ -5,7 +5,7 @@
 ## Login   <grange_c@epitech.eu>
 ##
 ## Started on  Sat Jan 21 11:49:15 2017 Benjamin Grange
-## Last update Sat Jan 21 12:54:56 2017 Benjamin Grange
+## Last update Sat Jan 21 14:48:22 2017 Benjamin Grange
 ##
 
 NAME		:= my_gkrellm
@@ -22,9 +22,6 @@ SRC		:= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS		= $(SRC:.cpp=.o)
 
 DEBUG_FLAG	:=
-ifdef debug
-  DEBUG_FLAG	:= -D_DEBUG
-endif
 
 all:		$(NAME)
 
@@ -46,7 +43,10 @@ re:		fclean all
 run:		$(NAME)
 		./$(NAME)
 
-debug: 		$(NAME)
+apply_debug:
+		$(eval DEBUG_FLAG := -D_DEBUG)
+
+debug:		apply_debug $(NAME)
 
 %.o:		%.cpp
 		echo "=>" $<
