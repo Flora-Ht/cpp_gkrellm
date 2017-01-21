@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 14:22:56 2017 Louis Guittard
-// Last update Sun Jan 22 00:11:11 2017 Louis Guittard
+// Last update Sun Jan 22 00:25:59 2017 Louis Guittard
 //
 
 #include "Terminal.hpp"
@@ -24,7 +24,8 @@ Terminal::Terminal()
     init_pair(1, COLOR_RED, COLOR_BLACK);
     timeout(200);
     this->_modules.push_back(new TModuleHostUser());
-    this->_modules.push_back(new TModuleDate(41, 0));
+    this->_modules.push_back(new TModuleDate(0, 16));
+    this->_modules.push_back(new TModuleOS(0, 32));
 }
 
 Terminal::~Terminal()
