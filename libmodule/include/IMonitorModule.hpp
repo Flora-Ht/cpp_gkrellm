@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 15:27:33 2017 Benjamin Grange
-// Last update Sat Jan 21 16:00:47 2017 Benjamin Grange
+// Last update Sat Jan 21 23:39:10 2017 Benjamin Grange
 //
 
 #ifndef IMONITORMODULE_HPP
@@ -15,7 +15,7 @@
 
 struct IMonitorModule
 {
-    virtual ~IMonitorModule() {}
+    virtual ~IMonitorModule() = default;
     virtual void retrieveInformations(void) throw(ModuleException) = 0;
 };
 

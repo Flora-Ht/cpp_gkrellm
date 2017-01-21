@@ -10,7 +10,8 @@ SRC		:= \
 		ModuleException.cpp \
 		ModuleHostname.cpp \
 		ModuleDate.cpp \
-		ModuleOS.cpp
+		ModuleOS.cpp \
+		ModuleCPU.cpp
 
 SRC		:= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS		= $(SRC:.cpp=.o)
