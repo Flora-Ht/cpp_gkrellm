@@ -15,8 +15,8 @@
 #include "MainWindow.hpp"
 
 MainWindow::MainWindow()
-	: QMainWindow(nullptr, Qt::Window) {
-
+	: QMainWindow(nullptr, Qt::Dialog) {
+		resize(300, 1000);
 		setWindowTitle("MyGkrellm");
 		setFocusPolicy(Qt::StrongFocus);
 

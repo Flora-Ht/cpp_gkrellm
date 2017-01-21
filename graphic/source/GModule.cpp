@@ -20,6 +20,7 @@ GModule::GModule(QString const &name, QWidget *parent, int x, int y, int width, 
 	_name(name), _x(x), _y(y), _width(width), _height(height), _closed(false) {
 
 		setFocusPolicy(Qt::StrongFocus);
+		// setFeatures(QDockWidget::DockWidgetMovable);
 
 		_widget->setWindowTitle(name);
 		_widget->resize(_width, _height);
@@ -45,6 +46,7 @@ GModule &GModule::operator=(GModule const &other) {
 	std::swap(_y, tmp._y);
 	std::swap(_width, tmp._width);
 	std::swap(_height, tmp._height);
+	std::swap(_closed, tmp._closed);
 	return *this;
 }
 
