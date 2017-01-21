@@ -3,11 +3,12 @@ NAME		:= libmodule.a
 
 INCDIR		:= include
 SRCDIR		:= source
-CXXFLAGS	:= -W -Wall -Wextra --std=c++11
+CXXFLAGS	:= -W -Wall -Wextra --std=c++11 -I$(INCDIR)
 LDFLAGS		:= #Lib here
 
 SRC		:= \
-		class.cpp
+		ModuleException.cpp \
+		ModuleHostname.cpp \
 
 SRC		:= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS		= $(SRC:.cpp=.o)
