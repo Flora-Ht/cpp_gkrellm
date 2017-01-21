@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 10:46:39 2017 Louis Guittard
-// Last update Sat Jan 21 21:46:44 2017 Louis Guittard
+// Last update Sat Jan 21 23:17:30 2017 Louis Guittard
 //
 
 #include "Window.hpp"
@@ -90,6 +90,10 @@ void			Window::drawBorder(char lb, char rb, char ub, char db, char corner) const
     mvhline(this->_y + this->_height, this->_x + 1, ub, this->_width - 1);
     mvvline(this->_y + 1, this->_x, lb, this->_height - 1);
     mvvline(this->_y + 1, this->_x + this->_width, rb, this->_height - 1);
+}
+
+void			Window::update()
+{
 }
 
 std::ostream	&operator<<(std::ostream &os, Window const &ref)

@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 14:20:44 2017 Louis Guittard
-// Last update Sat Jan 21 21:48:02 2017 Louis Guittard
+// Last update Sat Jan 21 23:06:49 2017 Louis Guittard
 //
 
 #ifndef TERMINAL_HPP_
@@ -14,7 +14,8 @@
 # include <ncurses.h>
 # include <vector>
 # include "Window.hpp"
-# include "ModuleHostUser.hpp"
+# include "TModuleHostUser.hpp"
+# include "TModuleDate.hpp"
 
 class			Terminal
 {

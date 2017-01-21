@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 10:36:10 2017 Louis Guittard
-// Last update Sat Jan 21 22:27:38 2017 Louis Guittard
+// Last update Sat Jan 21 23:31:26 2017 Louis Guittard
 //
 
 #ifndef WINDOW_HPP_
@@ -36,6 +36,7 @@ public:
 
 public:
     void			drawBorder(char = '|', char = '|', char = '-', char = '-', char = '+') const;
+    virtual void	update();
     virtual void	drawContent() const = 0;
 
 protected:

@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 14:22:56 2017 Louis Guittard
-// Last update Sat Jan 21 22:26:05 2017 Louis Guittard
+// Last update Sun Jan 22 00:11:11 2017 Louis Guittard
 //
 
 #include "Terminal.hpp"
@@ -23,8 +23,8 @@ Terminal::Terminal()
     start_color();
     init_pair(1, COLOR_RED, COLOR_BLACK);
     timeout(200);
-    this->_modules.push_back(new ModuleHostUser());
-    this->_modules.push_back(new ModuleHostUser(30, 30));
+    this->_modules.push_back(new TModuleHostUser());
+    this->_modules.push_back(new TModuleDate(41, 0));
 }
 
 Terminal::~Terminal()
@@ -123,6 +123,7 @@ void		Terminal::drawModules() const
          it != this->_modules.end();
          ++it)
          {
+             (*it)->update();
              if (i == this->_selected && this->_sort)
 	             attron(COLOR_PAIR(1));
              (*it)->drawBorder();
