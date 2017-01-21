@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 15:33:47 2017 Benjamin Grange
-// Last update Sat Jan 21 17:31:22 2017 Benjamin Grange
+// Last update Sat Jan 21 19:36:04 2017 Benjamin Grange
 //
 
 #define _DEFAULT_SOURCE
@@ -18,7 +18,6 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <iostream> //TODO FIXME
 
 #include "ModuleHostname.hpp"
 
