@@ -1,58 +1,86 @@
-##
-## Makefile for  in /home/grange_c/rendu/cpp_gkrellm/graphic/
-##
-## Made by Benjamin Grange
-## Login   <grange_c@epitech.eu>
-##
-## Started on  Sat Jan 21 11:49:15 2017 Benjamin Grange
-## Last update Sat Jan 21 15:12:42 2017 Benjamin Grange
-##
+#---------------------------------------------------------------------------------
+#
+# MAKEFILE - MyGkrellm
+#
+#---------------------------------------------------------------------------------
 
-NAME		:= my_gkrellmg
+NAME		:= my_grekllmg
+
+QT_LIBS		= Core Gui Widgets
+
+CXX 		= g++
 
 INCDIR		:= include
 INCMODULEDIR	:= ../libmodule/include/
 SRCDIR		:= source
-CXXFLAGS	:= -W -Wall -Wextra --std=c++11 -I$(INCDIR) -I$(INCMODULEDIR)
-LDFLAGS		:= -L.. -lmodule -lncurses
+LDFLAGS		:= -L.. -lmodule
 
-SRC		:= \
-		main.cpp
+CXXFLAGS	+= -g -Wall -Werror -Wextra -Wfatal-errors -std=c++11 -fPIC
+CXXFLAGS	+= -I$(INCDIR) -I/usr/include/qt -I$(INCMODULEDIR)
+CXXFLAGS	+= $(foreach lib, $(QT_LIBS), -I/usr/include/qt/Qt$(lib))
+LIBS		= $(foreach lib,$(QT_LIBS),-lQt5$(lib))
 
-SRC		:= $(addprefix $(SRCDIR)/, $(SRC))
-OBJS		= $(SRC:.cpp=.o)
 
-DEBUG_FLAG	:=
+SOURCES		= main.cpp \
+			  MainWindow.cpp \
+			  SideBar.cpp \
+			  GModule.cpp \
+			  GModuleHostname.cpp \
+			  GModuleDate.cpp \
+			  GModuleOS.cpp
 
-all:		$(NAME)
+HPPFILES	= MainWindow.hpp \
+			  SideBar.hpp \
+			  GModule.hpp \
+			  GModuleHostname.hpp \
+			  GModuleDate.hpp \
+			  GModuleOS.hpp
 
-$(NAME):	$(OBJS)
-		$(CXX) -o $(NAME) $(OBJS) $(LDFLAGS)
-		cp $(NAME) ../$(NAME)
+SOURCES 	:= $(addprefix $(SRCDIR)/, $(SOURCES))
+HPPFILES	:= $(addprefix $(INCDIR)/, $(HPPFILES))
+
+OFILES	=	$(SOURCES:.cpp=.oxx) \
+	$(HPPFILES:.hpp=.moc.o)
+
+all: $(NAME)
+
+$(NAME): $(OFILES)
+	$(CXX) $(OFILES) $(LIBS) -o $@ $(CXXFLAGS) $(LDFLAGS)
+	cp $(NAME) ../$(NAME)
 
 clean:
-		echo "Cleaning .o files..."
-		rm -rf $(OBJS)
+	echo "Cleaning .o/.moc files..."
+	rm -rf $(OFILES)
+	rm -rf $(INCDIR)/*.moc.cpp
 
-fclean: 	clean
-		echo "Cleaning executable..."
-		rm -rf $(NAME)
-		rm -rf ../$(NAME)
+fclean: clean
+	echo "Cleaning executable..."
+	rm -rf $(NAME)
+	rm -rf ../$(NAME)
 
-re:		fclean all
-
-run:		$(NAME)
-		./$(NAME)
+re: fclean all
+	
+run: $(NAME)
+	./$(NAME)
 
 apply_debug:
 		$(eval DEBUG_FLAG := -D_DEBUG)
-
+		
 debug:		apply_debug $(NAME)
+	
+%.oxx: %.cpp
+	echo "=>" $(notdir $<)
+	$(CXX) -c $< -o $@ $(CXXFLAGS) $(INCLUDE)
 
-%.o:		%.cpp
-		echo "=>" $<
-		$(CXX) -c $< -o $@ $(CXXFLAGS) $(DEBUG_FLAG)
+%.moc.cpp: %.hpp
+	@echo "=>" $(notdir $<)
+	@moc $< $(DEFINES) $(INCLUDE) -o $@ --no-notes
+
+%.moc.o: %.moc.cpp
+	@echo "=>" $(notdir $<)
+	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
+
+.PRECIOUS: %.moc.cpp
 
 .PHONY: all clean fclean re run debug
-
-.SILENT: all $(NAME) clean fclean re run debug $(OBJS)
+.SILENT: all $(NAME) clean fclean re run debug $(OFILES)

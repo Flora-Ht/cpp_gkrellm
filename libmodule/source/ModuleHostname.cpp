@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 15:33:47 2017 Benjamin Grange
-// Last update Sat Jan 21 17:31:22 2017 Benjamin Grange
+// Last update Sat Jan 21 22:10:49 2017 Benjamin Grange
 //
 
 #define _DEFAULT_SOURCE
@@ -18,7 +18,6 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <iostream> //TODO FIXME
 
 #include "ModuleHostname.hpp"
 
@@ -57,10 +56,12 @@ void ModuleHostname::lookForUsername(int i) {
         }
         if (tokens.size() >= 3 && std::stoi(tokens[2]) == i) {
             _user = tokens[0];
+            passwd.close();
             return ;
         }
     }
     // On error
+    passwd.close();
     throw ModuleException("Can't find a username matching user id in /etc/passwd");
 }
 
