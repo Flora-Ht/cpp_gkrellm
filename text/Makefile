@@ -5,7 +5,7 @@
 ## Login   <grange_c@epitech.eu>
 ##
 ## Started on  Sat Jan 21 11:49:15 2017 Benjamin Grange
-## Last update Sat Jan 21 15:03:18 2017 Benjamin Grange
+## Last update Sat Jan 21 21:59:30 2017 Louis Guittard
 ##
 
 NAME		:= my_gkrellm
@@ -17,7 +17,11 @@ CXXFLAGS	:= -W -Wall -Wextra --std=c++11 -I$(INCDIR) -I$(INCMODULEDIR)
 LDFLAGS		:= -L.. -lmodule -lncurses
 
 SRC		:= \
-		main.cpp
+		main.cpp \
+		input.cpp \
+		Window.cpp \
+		Terminal.cpp \
+		ModuleHostUser.cpp \
 
 SRC		:= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS		= $(SRC:.cpp=.o)

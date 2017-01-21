@@ -1,17 +1,34 @@
 //
-// main.cpp for  in /home/grange_c/rendu/cpp_gkrellm/graphic/source/
+// main.cpp for Rush in /home/guitta_l/worktree/Piscine/cpp_gkrellm/text/source/
 //
-// Made by Benjamin Grange
-// Login   <grange_c@epitech.eu>
+// Made by Louis Guittard
+// Login   <guitta_l@epitech.eu>
 //
-// Started on  Sat Jan 21 11:49:31 2017 Benjamin Grange
-// Last update Sat Jan 21 15:05:22 2017 Benjamin Grange
+// Started on  Sat Jan 21 21:58:14 2017 Louis Guittard
+// Last update Sat Jan 21 22:04:35 2017 Louis Guittard
 //
 
-#include <iostream>
-#include "libmodule.hpp"
+#include "Window.hpp"
+#include "Terminal.hpp"
+#include "input.hpp"
 
-int	main() {
-    std::cout << "In Text version !" << std::endl;
-    libmodule_init();
+int 			main()
+{
+	Terminal	term;
+	int			c;
+
+	c = -1;
+	term.update();
+	while((c = getch()) != 27)
+	{
+		term.update();
+		refresh();
+		toggleSort(term, c);
+		if (term.getSort())
+			sortInput(term, c);
+	}
+	endwin();
+	c = getch();
+	std::cout << c << term << std::endl;
+	return 0;
 }
