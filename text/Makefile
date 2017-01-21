@@ -5,7 +5,7 @@
 ## Login   <grange_c@epitech.eu>
 ##
 ## Started on  Sat Jan 21 11:49:15 2017 Benjamin Grange
-## Last update Sat Jan 21 14:48:22 2017 Benjamin Grange
+## Last update Sat Jan 21 15:01:29 2017 Benjamin Grange
 ##
 
 NAME		:= my_gkrellm
@@ -13,7 +13,7 @@ NAME		:= my_gkrellm
 INCDIR		:= include
 SRCDIR		:= source
 CXXFLAGS	:= -W -Wall -Wextra --std=c++11
-LDFLAGS		:= -lncurses
+LDFLAGS		:= -L.. -lmodule -lncurses
 
 SRC		:= \
 		main.cpp

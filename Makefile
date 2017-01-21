@@ -5,10 +5,10 @@
 ## Login   <grange_c@epitech.eu>
 ##
 ## Started on  Sat Jan 21 11:28:02 2017 Benjamin Grange
-## Last update Sat Jan 21 12:55:19 2017 Benjamin Grange
+## Last update Sat Jan 21 14:58:54 2017 Benjamin Grange
 ##
 
-SUBDIRS	:= graphic text
+SUBDIRS	:= libmodule graphic text
 
 all:
 	for dir in $(SUBDIRS); do make --no-print-directory -C $$dir; done
