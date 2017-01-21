@@ -5,42 +5,13 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 11:49:31 2017 Benjamin Grange
-// Last update Sat Jan 21 12:50:21 2017 Benjamin Grange
-//a
+// Last update Sat Jan 21 15:05:22 2017 Benjamin Grange
+//
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>                  /*  for sleep()  */
-#include <ncurses.h>
+#include <iostream>
+#include "libmodule.hpp"
 
-
-int main(void) {
-
-    WINDOW * mainwin;
-
-
-    /*  Initialize ncurses  */
-
-    if ( (mainwin = initscr()) == NULL ) {
-	fprintf(stderr, "Error initialising ncurses.\n");
-	exit(EXIT_FAILURE);
-    }
-
-
-    /*  Display "Hello, world!" in the centre of the
-	screen, call refresh() to show our changes, and
-	sleep() for a few seconds to get the full screen effect  */
-
-    mvaddstr(13, 33, "Hello, world!");
-    refresh();
-    sleep(3);
-
-
-    /*  Clean up after ourselves  */
-
-    delwin(mainwin);
-    endwin();
-    refresh();
-
-    return EXIT_SUCCESS;
+int	main() {
+    std::cout << "In Text version !" << std::endl;
+    libmodule_init();
 }

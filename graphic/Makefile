@@ -5,15 +5,16 @@
 ## Login   <grange_c@epitech.eu>
 ##
 ## Started on  Sat Jan 21 11:49:15 2017 Benjamin Grange
-## Last update Sat Jan 21 14:59:29 2017 Benjamin Grange
+## Last update Sat Jan 21 15:12:42 2017 Benjamin Grange
 ##
 
 NAME		:= my_gkrellmg
 
 INCDIR		:= include
+INCMODULEDIR	:= ../libmodule/include/
 SRCDIR		:= source
-CXXFLAGS	:= -W -Wall -Wextra --std=c++11
-LDFLAGS		:=  -L.. -lmodule
+CXXFLAGS	:= -W -Wall -Wextra --std=c++11 -I$(INCDIR) -I$(INCMODULEDIR)
+LDFLAGS		:= -L.. -lmodule -lncurses
 
 SRC		:= \
 		main.cpp
