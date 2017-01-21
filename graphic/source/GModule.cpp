@@ -17,13 +17,12 @@
 GModule::GModule(QString const &name, QWidget *parent, int x, int y, int width, int height)
 	: QDockWidget(name, parent, Qt::Dialog | Qt::CustomizeWindowHint),
 	_widget(new QWidget(this, Qt::Window)), _monitorModule(0),
-	_name(name), _x(x), _y(y), _width(width), _height(height) {
+	_name(name), _x(x), _y(y), _width(width), _height(height), _closed(false) {
 
 		setFocusPolicy(Qt::StrongFocus);
 
 		_widget->setWindowTitle(name);
 		_widget->resize(_width, _height);
-		// setWidget(_widget);
 	}
 
 GModule::GModule(GModule const &other)
@@ -60,6 +59,7 @@ GModule::~GModule() {
 void GModule::keyPressEvent(QKeyEvent *event) {
 	if (event->key() == Qt::Key_A) {
 		close();
+		_closed = true;
 	}
 	QWidget::keyPressEvent(event);
 }

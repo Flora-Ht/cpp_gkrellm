@@ -23,6 +23,7 @@
 
 # include "GModule.hpp"
 # include "GModuleHostname.hpp"
+# include "GModuleDate.hpp"
 
 class QStatusBar;
 

@@ -24,6 +24,7 @@ MainWindow::MainWindow()
 		statusBar()->addPermanentWidget(new QLabel("MyGkrellm ready to use."));
 
 		addDockWidget(Qt::LeftDockWidgetArea, new GModuleHostname(this, 2, 0));
+		addDockWidget(Qt::RightDockWidgetArea, new GModuleDate(this, 1620, 0));
 	}
 
 MainWindow::~MainWindow() {

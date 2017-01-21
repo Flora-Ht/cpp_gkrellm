@@ -9,6 +9,7 @@ LDFLAGS		:= #Lib here
 SRC		:= \
 		ModuleException.cpp \
 		ModuleHostname.cpp \
+		ModuleDate.cpp
 
 SRC		:= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS		= $(SRC:.cpp=.o)

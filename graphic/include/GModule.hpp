@@ -26,6 +26,7 @@
 # include "IMonitorModule.hpp"
 
 class GModule : public QDockWidget {
+	Q_OBJECT
 
 	private:
 
@@ -37,6 +38,7 @@ class GModule : public QDockWidget {
 		int _y;
 		int _width;
 		int _height;
+		bool _closed;
 
 	public:
 		GModule(QString const &, QWidget *, int, int, int, int);
