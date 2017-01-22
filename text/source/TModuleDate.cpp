@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 22:50:39 2017 Louis Guittard
-// Last update Sat Jan 21 23:38:11 2017 Louis Guittard
+// Last update Sun Jan 22 05:20:37 2017 Louis Guittard
 //
 
 #include "TModuleDate.hpp"
@@ -47,9 +47,9 @@ void			TModuleDate::drawContent() const
         return;
     }
     mvprintw(_y + 1, _x + 1, "DATE:");
-    mvprintw(_y + (_height / 3), _x + (_width - 13) / 2, "%d / %d / %d",
+    mvprintw(_y + (_height / 3), _x + (_width - 13) / 2, "%02d / %02d / %04d",
     this->getDay(), this->getMonth(), this->getYear());
-    mvprintw(_y + (_height * 2) / 3, _x + (_width - 12) / 2, "%d : %d : %d",
+    mvprintw(_y + (_height * 2) / 3, _x + (_width - 12) / 2, "%02d : %02d : %02d",
     this->getHour(), this->getMinute(), this->getSecond());
     wrefresh(this->_window);
 }

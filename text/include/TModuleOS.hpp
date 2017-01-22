@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sun Jan 22 00:13:35 2017 Louis Guittard
-// Last update Sun Jan 22 00:25:02 2017 Louis Guittard
+// Last update Sun Jan 22 01:13:01 2017 Louis Guittard
 //
 
 #ifndef TMODULEOS_HPP_
@@ -17,7 +17,7 @@
 class				TModuleOS:		public Window, public ModuleOS
 {
 public:
-    TModuleOS(int x = 0, int y = 0, int height = 15, int width = 40);
+    TModuleOS(int x = 0, int y = 0, int height = 16, int width = 40);
     ~TModuleOS();
     TModuleOS(TModuleOS const &ref);
     TModuleOS		&operator=(TModuleOS const &ref);
