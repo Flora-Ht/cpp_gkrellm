@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sun Jan 22 05:03:22 2017 Benjamin Grange
-// Last update Sun Jan 22 08:07:12 2017 Benjamin Grange
+// Last update Sun Jan 22 08:22:40 2017 Benjamin Grange
 //
 
 #ifndef MODULENETWORK_HPP
@@ -44,7 +44,7 @@ public:
     std::vector<NetworkInterface> const &getNetworkInterfaces(void) const;
 private:
     bool _first;
-    std::clock_t timed;
+    std::clock_t _timed;
     std::clock_t _prevTime;
     std::vector<NetworkInterface> _interfaces;
     std::vector<NetworkInterface> _oldInterfaces;

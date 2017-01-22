@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sun Jan 22 05:03:20 2017 Benjamin Grange
-// Last update Sun Jan 22 08:16:52 2017 Benjamin Grange
+// Last update Sun Jan 22 08:29:09 2017 Benjamin Grange
 //
 
 #include <sys/time.h>
@@ -73,7 +73,7 @@ void ModuleNetwork::retrieveInformations(void) throw(ModuleException)
         }
     }
     _first = false;
-    timed = t - _prevTime;
+    _timed = t - _prevTime;
     _prevTime = t;
     _oldInterfaces = _interfaces;
 }
@@ -102,8 +102,8 @@ std::string ModuleNetwork::getDownloadSpeed(NetworkInterface const &ni) const {
     std::string label;
 
     double speed = 0.0;
-    if (timed > 0) {
-        speed = (double)(ni._recvPacked) / (double)(timed / 1000.0);
+    if (_timed > 0) {
+        speed = (double)(ni._recvPacked) / (double)(_timed / 1000.0);
     }
     speed = humanize_size(speed, label);
     stream << std::fixed << std::setprecision(2) << speed << label << "/s";
@@ -115,8 +115,8 @@ std::string ModuleNetwork::getUploadSpeed(NetworkInterface const &ni) const {
     std::string label;
 
     double speed = 0.0;
-    if (timed > 0) {
-        speed = (double)(ni._sendPacked) / (timed * 1000.0);
+    if (_timed > 0) {
+        speed = 1000.0 * (double)(ni._sendPacked) / (_timed);
     }
     speed = humanize_size(speed, label);
     stream << std::fixed << std::setprecision(2) << speed << label << "/s";
