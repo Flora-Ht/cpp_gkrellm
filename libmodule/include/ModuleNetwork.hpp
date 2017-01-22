@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sun Jan 22 05:03:22 2017 Benjamin Grange
-// Last update Sun Jan 22 05:21:21 2017 Benjamin Grange
+// Last update Sun Jan 22 08:07:12 2017 Benjamin Grange
 //
 
 #ifndef MODULENETWORK_HPP
@@ -13,7 +13,21 @@
 
 # include <string>
 # include <ctime>
+# include <vector>
 # include "IMonitorModule.hpp"
+
+struct NetworkInterface
+{
+    NetworkInterface();
+    ~NetworkInterface();
+    NetworkInterface(NetworkInterface const &);
+    NetworkInterface &operator=(NetworkInterface);
+    std::string _name;
+    unsigned long _oldRecvPacket;
+    unsigned long _recvPacked;
+    unsigned long _oldSendPacket;
+    unsigned long _sendPacked;
+};
 
 class ModuleNetwork : public IMonitorModule
 {
@@ -25,10 +39,15 @@ public:
 
     virtual void retrieveInformations(void) throw(ModuleException) override;
 
+    std::string getDownloadSpeed(NetworkInterface const &ni) const;
+    std::string getUploadSpeed(NetworkInterface const &ni) const;
+    std::vector<NetworkInterface> const &getNetworkInterfaces(void) const;
 private:
-    std::time_t		_prevTime;
-    unsigned long	_oldRecvPacket;
-    unsigned long	_recvPacketd;
+    bool _first;
+    std::clock_t timed;
+    std::clock_t _prevTime;
+    std::vector<NetworkInterface> _interfaces;
+    std::vector<NetworkInterface> _oldInterfaces;
 };
 
 

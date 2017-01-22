@@ -12,7 +12,8 @@ SRC		:= \
 		ModuleDate.cpp \
 		ModuleOS.cpp \
 		ModuleCPU.cpp \
-		ModuleRAM.cpp
+		ModuleRAM.cpp \
+		ModuleNetwork.cpp
 
 SRC		:= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS		= $(SRC:.cpp=.o)
