@@ -5,7 +5,7 @@
 ## Login   <grange_c@epitech.eu>
 ##
 ## Started on  Sat Jan 21 11:49:15 2017 Benjamin Grange
-## Last update Sun Jan 22 05:46:36 2017 Louis Guittard
+## Last update Sun Jan 22 06:56:24 2017 Louis Guittard
 ##
 
 NAME		:= my_gkrellm
@@ -26,6 +26,7 @@ SRC		:= \
 		TModuleOS.cpp \
 		TModuleCPU.cpp \
 		TModuleRAM.cpp \
+		TModuleNetwork.cpp \
 
 SRC		:= $(addprefix $(SRCDIR)/, $(SRC))
 OBJS		= $(SRC:.cpp=.o)

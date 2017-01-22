@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 14:22:56 2017 Louis Guittard
-// Last update Sun Jan 22 06:43:51 2017 Louis Guittard
+// Last update Sun Jan 22 07:18:02 2017 Louis Guittard
 //
 
 #include "Terminal.hpp"
@@ -23,13 +23,14 @@ Terminal::Terminal()
     start_color();
     init_pair(1, COLOR_RED, COLOR_BLACK);
     init_pair(2, COLOR_GREEN, COLOR_BLACK);
-    init_pair(3, COLOR_YELLOW, COLOR_BLACK);
-    timeout(200);
+    init_pair(3, COLOR_CYAN, COLOR_BLACK);
+    timeout(1000);
     this->_modules.push_back(new TModuleHostUser());
     this->_modules.push_back(new TModuleDate(0, 17));
     this->_modules.push_back(new TModuleOS(0, 34));
     this->_modules.push_back(new TModuleCPU(41, 0));
     this->_modules.push_back(new TModuleRAM(41, 17));
+    this->_modules.push_back(new TModuleNetwork(41, 34));
 }
 
 Terminal::~Terminal()
@@ -97,6 +98,9 @@ void		Terminal::addModule(char mod)
             break;
         case 4:
     	    this->_modules.push_back(new TModuleRAM(this->_cols / 10, this->_lines / 10));
+        	break;
+        case 5:
+    	    this->_modules.push_back(new TModuleNetwork(this->_cols / 10, this->_lines / 10));
         	break;
     }
 }
