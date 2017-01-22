@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 21:58:14 2017 Louis Guittard
-// Last update Sat Jan 21 22:04:35 2017 Louis Guittard
+// Last update Sun Jan 22 01:22:14 2017 Louis Guittard
 //
 
 #include "Window.hpp"
@@ -23,7 +23,7 @@ int 			main()
 	{
 		term.update();
 		refresh();
-		toggleSort(term, c);
+		actionInput(term, c);
 		if (term.getSort())
 			sortInput(term, c);
 	}

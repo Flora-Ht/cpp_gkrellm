@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 14:22:56 2017 Louis Guittard
-// Last update Sun Jan 22 00:25:59 2017 Louis Guittard
+// Last update Sun Jan 22 05:18:49 2017 Louis Guittard
 //
 
 #include "Terminal.hpp"
@@ -22,10 +22,12 @@ Terminal::Terminal()
     curs_set(0);
     start_color();
     init_pair(1, COLOR_RED, COLOR_BLACK);
+    init_pair(2, COLOR_GREEN, COLOR_BLACK);
     timeout(200);
     this->_modules.push_back(new TModuleHostUser());
-    this->_modules.push_back(new TModuleDate(0, 16));
-    this->_modules.push_back(new TModuleOS(0, 32));
+    this->_modules.push_back(new TModuleDate(0, 17));
+    this->_modules.push_back(new TModuleOS(0, 34));
+    this->_modules.push_back(new TModuleCPU(41, 0));
 }
 
 Terminal::~Terminal()
@@ -54,9 +56,14 @@ std::vector<Window *>	Terminal::getModules() const
     return (this->_modules);
 }
 
-bool			Terminal::getSort() const
+bool		Terminal::getSort() const
 {
     return (this->_sort);
+}
+
+void		Terminal::setTimeout(int value)
+{
+    timeout(value);
 }
 
 void		Terminal::pushModule(Window &mod)
@@ -69,6 +76,24 @@ void		Terminal::pushModule(Window &mod)
 	             return;
          }
     this->_modules.push_back(&mod);
+}
+
+void		Terminal::addModule(char mod)
+{
+    switch (mod) {
+        case 0:
+        	this->_modules.push_back(new TModuleHostUser(this->_cols / 10, this->_lines / 10));
+        	break;
+        case 1:
+	        this->_modules.push_back(new TModuleDate(this->_cols / 10, this->_lines / 10));
+        	break;
+        case 2:
+	        this->_modules.push_back(new TModuleOS(this->_cols / 10, this->_lines / 10));
+        	break;
+        case 3:
+	        this->_modules.push_back(new TModuleCPU(this->_cols / 10, this->_lines / 10));
+        	break;
+    }
 }
 
 void		Terminal::removeModule()
