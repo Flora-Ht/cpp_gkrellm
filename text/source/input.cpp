@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 21:56:30 2017 Louis Guittard
-// Last update Sun Jan 22 05:29:07 2017 Louis Guittard
+// Last update Sun Jan 22 06:42:32 2017 Louis Guittard
 //
 
 #include <ncurses.h>
@@ -20,6 +20,7 @@ void		menuInput(Terminal &term)
     mvprintw((term.getLines() / 2) - 2, (term.getCols() - 8) / 2, "1 - Date");
     mvprintw((term.getLines() / 2), (term.getCols() - 6) / 2, "2 - OS");
     mvprintw((term.getLines() / 2) + 2, (term.getCols() - 7) / 2, "3 - CPU");
+    mvprintw((term.getLines() / 2) + 4, (term.getCols() - 7) / 2, "4 - RAM");
     refresh();
     term.setTimeout(15000);
     c = getch();

@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 14:20:44 2017 Louis Guittard
-// Last update Sun Jan 22 04:00:02 2017 Louis Guittard
+// Last update Sun Jan 22 05:46:48 2017 Louis Guittard
 //
 
 #ifndef TERMINAL_HPP_
@@ -18,6 +18,7 @@
 # include "TModuleDate.hpp"
 # include "TModuleOS.hpp"
 # include "TModuleCPU.hpp"
+# include "TModuleRAM.hpp"
 
 class			Terminal
 {

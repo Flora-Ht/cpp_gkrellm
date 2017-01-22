@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sat Jan 21 21:58:14 2017 Louis Guittard
-// Last update Sun Jan 22 01:22:14 2017 Louis Guittard
+// Last update Sun Jan 22 06:47:21 2017 Louis Guittard
 //
 
 #include "Window.hpp"
@@ -29,6 +29,8 @@ int 			main()
 	}
 	endwin();
 	c = getch();
-	std::cout << c << term << std::endl;
+	#ifdef _DEBUG
+	std::cout << term << std::endl;
+	#endif
 	return 0;
 }
