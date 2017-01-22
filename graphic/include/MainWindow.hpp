@@ -30,6 +30,7 @@
 # include "GModuleDate.hpp"
 # include "GModuleOS.hpp"
 # include "GModuleCPU.hpp"
+# include "GModuleRAM.hpp"
 
 class QStatusBar;
 

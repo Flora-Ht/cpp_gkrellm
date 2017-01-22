@@ -32,6 +32,7 @@ class SideBar : public QDockWidget {
 		QPushButton *_moduleDateButton;
 		QPushButton *_moduleOSButton;
 		QPushButton *_moduleCPUButton;
+		QPushButton *_moduleRAMButton;
 
 	protected:
 
@@ -46,6 +47,7 @@ class SideBar : public QDockWidget {
 		void addDateModule();
 		void addOSModule();
 		void addCPUModule();
+		void addRAMModule();
 };
 
 #endif /* !SIDEBAR_H_ */
