@@ -31,6 +31,7 @@
 # include "GModuleOS.hpp"
 # include "GModuleCPU.hpp"
 # include "GModuleRAM.hpp"
+# include "GModuleNetwork.hpp"
 
 class QStatusBar;
 

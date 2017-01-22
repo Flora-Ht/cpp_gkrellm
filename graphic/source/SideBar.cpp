@@ -34,12 +34,15 @@ SideBar::SideBar(QWidget *parent, MainWindow *win)
 		connect(_moduleCPUButton, SIGNAL(pressed()), this, SLOT(addCPUModule()));
 		_moduleRAMButton = new QPushButton("Add new RAM Module", this);
 		connect(_moduleRAMButton, SIGNAL(pressed()), this, SLOT(addRAMModule()));
+		_moduleNetworkButton = new QPushButton("Add new Network Module", this);
+		connect(_moduleNetworkButton, SIGNAL(pressed()), this, SLOT(addNetworkModule()));
 		
 		layout->addWidget(_moduleHostnameButton);
 		layout->addWidget(_moduleDateButton);
 		layout->addWidget(_moduleOSButton);
 		layout->addWidget(_moduleCPUButton);
 		layout->addWidget(_moduleRAMButton);
+		layout->addWidget(_moduleNetworkButton);
 		
 		wids->setLayout(layout);
 		setWidget(wids);
@@ -52,6 +55,9 @@ SideBar::~SideBar() {
 	delete _moduleHostnameButton;
 	delete _moduleDateButton;
 	delete _moduleOSButton;
+	delete _moduleCPUButton;
+	delete _moduleRAMButton;
+	delete _moduleNetworkButton;
 }
 
 void SideBar::addHostnameModule() {
@@ -85,6 +91,13 @@ void SideBar::addCPUModule() {
 void SideBar::addRAMModule() {
 
 	QMdiSubWindow *sub = _window->getArea()->addSubWindow(new GModuleRAM(_window, 0, 0), Qt::Dialog);
+	sub->resize(MainWindow::width, 200);
+	sub->show();
+}
+
+void SideBar::addNetworkModule() {
+	
+	QMdiSubWindow *sub = _window->getArea()->addSubWindow(new GModuleNetwork(_window, 0, 0), Qt::Dialog);
 	sub->resize(MainWindow::width, 200);
 	sub->show();
 }
