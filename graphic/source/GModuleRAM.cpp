@@ -35,26 +35,26 @@ GModuleRAM::GModuleRAM(QWidget *parent, int x, int y)
 		_ram = new QLabel("", this);
 		std::stringstream ss;
 		ss.precision(2);
-		ss << "Ram: " << mod->toGigabyte(mod->totalRam() - mod->freeRam());
-		ss << "/" << mod->toGigabyte(mod->totalRam()) << "GB";
+		ss << "Ram: " << mod->toGigabyte(mod->getTotalRam() - mod->getFreeRam() - mod->getBufferRam());
+		ss << "/" << mod->toGigabyte(mod->getTotalRam()) << "GB";
 		_ram->setText(QString::fromStdString(ss.str()));
 		
 		_freeRam = new QProgressBar();
 		_freeRam->setRange(0, 100);
 		_freeRam->setVisible(true);
-		double percentRam = (((float)mod->totalRam() - (float)mod->freeRam()) / (float)mod->totalRam()) * 100;
+		double percentRam = (((float)mod->getTotalRam() - (float)mod->getFreeRam() - (float)mod->getBufferRam()) / (float)mod->getTotalRam()) * 100;
 		_freeRam->setValue((int)percentRam);
 
 		_swap = new QLabel("", this);
 		ss.str("");
-		ss << "Swap: " << mod->toGigabyte(mod->totalSwap() - mod->freeSwap());
-		ss << "/" << mod->toGigabyte(mod->totalSwap()) << "GB";
+		ss << "Swap: " << mod->toGigabyte(mod->getTotalSwap() - mod->getTotalSwap());
+		ss << "/" << mod->toGigabyte(mod->getTotalSwap()) << "GB";
 		_swap->setText(QString::fromStdString(ss.str()));
 		
 		_freeSwap = new QProgressBar();
 		_freeSwap->setRange(0, 100);
 		_freeSwap->setVisible(true);
-		double percentSwap = (((float)mod->totalSwap() - (float)mod->freeSwap()) / (float)mod->totalSwap()) * 100;
+		double percentSwap = (((float)mod->getTotalSwap() - (float)mod->getTotalSwap()) / (float)mod->getTotalSwap()) * 100;
 		_freeSwap->setValue((int)percentSwap);
 
 		layout->addWidget(_ram);
@@ -67,8 +67,6 @@ GModuleRAM::GModuleRAM(QWidget *parent, int x, int y)
 		show();
 	}
 
-// std::cout << "Ram: " << ram->toGigabyte(ram->totalRam() - ram->freeRam()) << "/" << ram->toGigabyte(ram->totalRam()) << std::endl;
-// std::cout << "Ram: " << ram->toGigabyte(ram->totalSwap() - ram->freeSwap()) << "/" << ram->toGigabyte(ram->totalSwap()) << std::endl;
 GModuleRAM::~GModuleRAM() {
 
 }
@@ -83,9 +81,9 @@ void GModuleRAM::updateBars() {
 	catch (ModuleException &e) {
 	}
 
-	double percentRam = (((float)mod->totalRam() - (float)mod->freeRam()) / (float)mod->totalRam()) * 100;
+	double percentRam = (((float)mod->getTotalRam() - (float)mod->getFreeRam() - (float)mod->getBufferRam()) / (float)mod->getTotalRam()) * 100;
 	_freeRam->setValue((int)percentRam);
-	double percentSwap = (((float)mod->totalSwap() - (float)mod->freeSwap()) / (float)mod->totalSwap()) * 100;
+	double percentSwap = (((float)mod->getTotalSwap() - (float)mod->getTotalSwap()) / (float)mod->getTotalSwap()) * 100;
 	_freeSwap->setValue((int)percentSwap);
 	update();
 }
