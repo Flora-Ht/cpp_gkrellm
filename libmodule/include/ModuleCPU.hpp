@@ -5,15 +5,15 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 21:47:44 2017 Benjamin Grange
-// Last update Sun Jan 22 03:08:22 2017 Benjamin Grange
+// Last update Sun Jan 22 06:57:19 2017 Benjamin Grange
 //
 
 #ifndef MODULECPU_HPP
 # define MODULECPU_HPP
 
 # include <vector>
+# include <exception>
 # include "IMonitorModule.hpp"
-
 struct CPU
 {
     CPU();
@@ -25,7 +25,7 @@ struct CPU
     std::string _name;
     double _mhz;
     double _percent;
-    std::vector<int> _stats; // Do not print that.
+    std::vector<int> _stats; // Do not print this
 };
 
 class ModuleCPU : public IMonitorModule
@@ -37,7 +37,6 @@ public:
     ~ModuleCPU();
 
     virtual void retrieveInformations(void) throw(ModuleException) override;
-
     std::vector<CPU> const &getCPUs() const;
 
 private:

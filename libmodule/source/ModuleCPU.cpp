@@ -5,14 +5,14 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 21:24:58 2017 Benjamin Grange
-// Last update Sun Jan 22 03:55:21 2017 Benjamin Grange
+// Last update Sun Jan 22 06:57:50 2017 Benjamin Grange
 //
 
 #include <algorithm>
 #include <sstream>
 #include <fstream>
 #include "ModuleCPU.hpp"
-#include "parsotron9000.hpp"
+#include "Parsotron9000.hpp"
 
 ModuleCPU::ModuleCPU()
 : _cpu()
@@ -31,8 +31,6 @@ static void parseCpuLine(std::string const &line, char const *prefix, T &val) {
         stream >> val;
     }
 }
-
-#include <iostream>
 
 void ModuleCPU::retrieveInformations(void) throw(ModuleException)
 {
@@ -85,7 +83,7 @@ void ModuleCPU::retrieveInformations(void) throw(ModuleException)
             long totald = total - prevTotal;
             long idled = idle - prevIdle;
             if (totald == 0.0) {
-                throw ModuleException("Error while calculating cpu percentage");
+                throw std::logic_error("Error while calculating cpu percentage");
             }
             _cpu[i]._percent = ((double)(totald - idled) / (double)totald) * 100.0;
         }
