@@ -26,7 +26,7 @@ MainWindow::MainWindow()
 
 		setCentralWidget(_area);
 		QMdiSubWindow *sideBar = _area->addSubWindow(new SideBar(this, this), Qt::Dialog);
-		sideBar->resize(MainWindow::width, 175);
+		sideBar->resize(MainWindow::width, 200);
 		QMdiSubWindow *sub = _area->addSubWindow(new GModuleHostname(this, 0, 0), Qt::Dialog);
 		sub->resize(MainWindow::width, 100);
 		QMdiSubWindow *sub2 = _area->addSubWindow(new GModuleDate(this, 0, 0), Qt::Dialog);
@@ -35,6 +35,8 @@ MainWindow::MainWindow()
 		sub3->resize(MainWindow::width, 100);
 		QMdiSubWindow *sub4 = _area->addSubWindow(new GModuleCPU(this, 0, 0), Qt::Dialog);
 		sub4->resize(MainWindow::width, 300);
+		QMdiSubWindow *sub5 = _area->addSubWindow(new GModuleRAM(this, 0, 0), Qt::Dialog);
+		sub5->resize(MainWindow::width, 200);
 	}
 
 MainWindow::~MainWindow() {

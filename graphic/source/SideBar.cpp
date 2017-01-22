@@ -15,7 +15,7 @@
 #include "SideBar.hpp"
 
 SideBar::SideBar(QWidget *parent, MainWindow *win)
-	: QDockWidget("", parent, Qt::Dialog | Qt::CustomizeWindowHint),
+	: QDockWidget("Menu", parent, Qt::Dialog | Qt::CustomizeWindowHint),
 	_window(win),
 	_moduleHostnameButton(nullptr), _moduleDateButton(nullptr), _moduleOSButton(nullptr) {
 
@@ -32,11 +32,14 @@ SideBar::SideBar(QWidget *parent, MainWindow *win)
 		connect(_moduleOSButton, SIGNAL(pressed()), this, SLOT(addOSModule()));
 		_moduleCPUButton = new QPushButton("Add new CPU Module", this);
 		connect(_moduleCPUButton, SIGNAL(pressed()), this, SLOT(addCPUModule()));
+		_moduleRAMButton = new QPushButton("Add new RAM Module", this);
+		connect(_moduleRAMButton, SIGNAL(pressed()), this, SLOT(addRAMModule()));
 		
 		layout->addWidget(_moduleHostnameButton);
 		layout->addWidget(_moduleDateButton);
 		layout->addWidget(_moduleOSButton);
 		layout->addWidget(_moduleCPUButton);
+		layout->addWidget(_moduleRAMButton);
 		
 		wids->setLayout(layout);
 		setWidget(wids);
@@ -76,5 +79,12 @@ void SideBar::addCPUModule() {
 
 	QMdiSubWindow *sub = _window->getArea()->addSubWindow(new GModuleCPU(_window, 0, 0), Qt::Dialog);
 	sub->resize(MainWindow::width, 300);
+	sub->show();
+}
+
+void SideBar::addRAMModule() {
+
+	QMdiSubWindow *sub = _window->getArea()->addSubWindow(new GModuleRAM(_window, 0, 0), Qt::Dialog);
+	sub->resize(MainWindow::width, 200);
 	sub->show();
 }
