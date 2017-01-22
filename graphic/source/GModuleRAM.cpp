@@ -51,8 +51,12 @@ GModuleRAM::GModuleRAM(QWidget *parent, int x, int y)
 		_freeRam = new QProgressBar();
 		_freeRam->setRange(0, 100);
 		_freeRam->setVisible(true);
-		double percentRam = (((float)mod->getTotalRam() - (float)mod->getFreeRam() - (float)mod->getBufferRam()) / (float)mod->getTotalRam()) * 100;
-		_freeRam->setValue((int)percentRam);
+		if (mod->getTotalRam() > 0) {
+			double percentRam = (((float)mod->getTotalRam() - (float)mod->getFreeRam() - (float)mod->getBufferRam()) / (float)mod->getTotalRam()) * 100;
+			_freeRam->setValue((int)percentRam);
+		} else {
+			_freeRam->setValue(0);
+		}
 
 		_swap = new QLabel("", this);
 		ss.str("");
@@ -63,8 +67,12 @@ GModuleRAM::GModuleRAM(QWidget *parent, int x, int y)
 		_freeSwap = new QProgressBar();
 		_freeSwap->setRange(0, 100);
 		_freeSwap->setVisible(true);
-		double percentSwap = (((float)mod->getTotalSwap() - (float)mod->getTotalSwap()) / (float)mod->getTotalSwap()) * 100;
-		_freeSwap->setValue((int)percentSwap);
+		if (mod->getTotalSwap() > 0) {
+			double percentSwap = (((float)mod->getTotalSwap() - (float)mod->getTotalSwap()) / (float)mod->getTotalSwap()) * 100;
+			_freeSwap->setValue((int)percentSwap);
+		} else {
+			_freeSwap->setValue(0);
+		}
 
 		layout->addWidget(_ram);
 		layout->addWidget(_freeRam);
@@ -95,10 +103,18 @@ void GModuleRAM::updateBars() {
 		return ;
 	}
 
-	double percentRam = (((float)mod->getTotalRam() - (float)mod->getFreeRam() - (float)mod->getBufferRam()) / (float)mod->getTotalRam()) * 100;
-	_freeRam->setValue((int)percentRam);
-	double percentSwap = (((float)mod->getTotalSwap() - (float)mod->getTotalSwap()) / (float)mod->getTotalSwap()) * 100;
-	_freeSwap->setValue((int)percentSwap);
+	if (mod->getTotalRam() > 0) {
+		double percentRam = (((float)mod->getTotalRam() - (float)mod->getFreeRam() - (float)mod->getBufferRam()) / (float)mod->getTotalRam()) * 100;
+		_freeRam->setValue((int)percentRam);
+	} else {
+		_freeRam->setValue(0);
+	}
+	if (mod->getTotalSwap() > 0) {
+		double percentSwap = (((float)mod->getTotalSwap() - (float)mod->getTotalSwap()) / (float)mod->getTotalSwap()) * 100;
+		_freeSwap->setValue((int)percentSwap);
+	} else {
+		_freeSwap->setValue(0);
+	}
 	update();
 }
 
