@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sun Jan 22 01:06:24 2017 Louis Guittard
-// Last update Sun Jan 22 05:35:00 2017 Louis Guittard
+// Last update Sun Jan 22 06:25:20 2017 Louis Guittard
 //
 
 #include "TModuleCPU.hpp"
@@ -63,9 +63,13 @@ void					TModuleCPU::drawContent() const
              attron(COLOR_PAIR(2));
              length = this->_width - it->_vendor.size() - 6;
              while (length > 0 &&
-             		j < (unsigned int)length &&
-                    (j / (double)length) * 100 < it->_percent)
+             		j < (unsigned int)length)
              {
+                 if ((j / (double)length) * 100 >= it->_percent)
+                 {
+                     attroff(COLOR_PAIR(2));
+                     attron(COLOR_PAIR(1));
+                 }
                  mvprintw(_y + (_height * i) / 4 + 2, _x + 5 + it->_vendor.size()+ j, "|");
                  j += 1;
              }
