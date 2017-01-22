@@ -75,6 +75,6 @@ void SideBar::addOSModule() {
 void SideBar::addCPUModule() {
 
 	QMdiSubWindow *sub = _window->getArea()->addSubWindow(new GModuleCPU(_window, 0, 0), Qt::Dialog);
-	sub->resize(MainWindow::width, 200);
+	sub->resize(MainWindow::width, 300);
 	sub->show();
 }

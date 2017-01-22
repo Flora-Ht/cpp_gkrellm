@@ -34,7 +34,7 @@ MainWindow::MainWindow()
 		QMdiSubWindow *sub3 = _area->addSubWindow(new GModuleOS(this, 0, 0), Qt::Dialog);
 		sub3->resize(MainWindow::width, 100);
 		QMdiSubWindow *sub4 = _area->addSubWindow(new GModuleCPU(this, 0, 0), Qt::Dialog);
-		sub4->resize(MainWindow::width, 200);
+		sub4->resize(MainWindow::width, 300);
 	}
 
 MainWindow::~MainWindow() {
