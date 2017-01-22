@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 21:24:58 2017 Benjamin Grange
-// Last update Sun Jan 22 06:57:50 2017 Benjamin Grange
+// Last update Sun Jan 22 09:22:15 2017 Benjamin Grange
 //
 
 #include <algorithm>
@@ -83,7 +83,7 @@ void ModuleCPU::retrieveInformations(void) throw(ModuleException)
             long totald = total - prevTotal;
             long idled = idle - prevIdle;
             if (totald == 0.0) {
-                throw std::logic_error("Error while calculating cpu percentage");
+                throw ModuleException("Error while calculating cpu percentage");
             }
             _cpu[i]._percent = ((double)(totald - idled) / (double)totald) * 100.0;
         }
