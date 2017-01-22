@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sun Jan 22 04:05:43 2017 Benjamin Grange
-// Last update Sun Jan 22 04:31:03 2017 Benjamin Grange
+// Last update Sun Jan 22 05:27:08 2017 Benjamin Grange
 //
 
 #ifndef MODULERAM_HPP
@@ -23,10 +23,11 @@ public:
 
     virtual void retrieveInformations(void) throw(ModuleException) override;
 
-    unsigned long const &totalRam(void) const;
-    unsigned long const &freeRam(void) const;
-    unsigned long const &totalSwap(void) const;
-    unsigned long const &freeSwap(void) const;
+    unsigned long const &getTotalRam(void) const;
+    unsigned long const &getBufferRam(void) const;
+    unsigned long const &getFreeRam(void) const;
+    unsigned long const &getTotalSwap(void) const;
+    unsigned long const &getFreeSwap(void) const;
 
     double toGigabyte(unsigned long const &) const;
 
@@ -35,6 +36,7 @@ private:
     unsigned long _freeRam;
     unsigned long _totalSwap;
     unsigned long _freeSwap;
+    unsigned long _bufferRam;
 };
 
 

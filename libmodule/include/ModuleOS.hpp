@@ -5,7 +5,7 @@
 // Login   <grange_c@epitech.eu>
 //
 // Started on  Sat Jan 21 19:33:25 2017 Benjamin Grange
-// Last update Sat Jan 21 19:45:54 2017 Benjamin Grange
+// Last update Sun Jan 22 05:06:27 2017 Benjamin Grange
 //
 
 #ifndef MODULEOS_HPP
@@ -31,6 +31,5 @@ private:
     std::string _os;
     std::string _version;
 };
-
 
 #endif /* !MODULEOS_HPP */
