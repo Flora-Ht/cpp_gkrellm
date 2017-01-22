@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <QApplication>
+#include <QMdiArea>
 
 #include "MainWindow.hpp"
 
@@ -22,6 +23,9 @@ int main(int ac, char **av) {
 	QApplication app(ac, av);
 	
 	MainWindow window;
+	// QMdiArea *mdi = new QMdiArea(&window);
+	// window.setCentralWidget(mdi);
+	
 	window.show();
 	
 	return app.exec();

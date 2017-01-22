@@ -22,6 +22,7 @@
 # include <QStatusBar>
 # include <QWidget>
 # include <QMdiArea>
+# include <QMdiSubWindow>
 
 # include "SideBar.hpp"
 # include "GModule.hpp"
@@ -35,6 +36,7 @@ class MainWindow : public QMainWindow {
 	Q_OBJECT
 
 	private:
+		QMdiArea *_area;
 
 	protected:
 
@@ -44,8 +46,12 @@ class MainWindow : public QMainWindow {
 		MainWindow &operator=(MainWindow const &);
 		virtual ~MainWindow();
 
+		static const unsigned int width = 300;
+		static const unsigned int height = 1000;
+		
 		virtual void keyPressEvent(QKeyEvent *) override;
 		
+		QMdiArea *getArea() const;
 		void addNewModule(GModule *);
 };
 

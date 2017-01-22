@@ -19,8 +19,8 @@ SideBar::SideBar(QWidget *parent, MainWindow *win)
 	_window(win),
 	_moduleHostnameButton(nullptr), _moduleDateButton(nullptr), _moduleOSButton(nullptr) {
 
-		resize(500, 1020);
-		move(1450, 20);
+		// resize(500, 1020);
+		// move(1450, 20);
 		setFeatures(QDockWidget::NoDockWidgetFeatures);
 		
 		QWidget *wids = new QWidget(this);
@@ -52,15 +52,21 @@ SideBar::~SideBar() {
 
 void SideBar::addHostnameModule() {
 
-	_window->addNewModule(new GModuleHostname(_window, rand() % 1400, rand() % 1000));
+	QMdiSubWindow *sub = _window->getArea()->addSubWindow(new GModuleHostname(_window, 0, 0), Qt::Dialog);
+	sub->resize(MainWindow::width, 100);
+	sub->show();
 }
 
 void SideBar::addDateModule() {
 
-	_window->addNewModule(new GModuleDate(_window, rand() % 1400, rand() % 1000));
+	QMdiSubWindow *sub = _window->getArea()->addSubWindow(new GModuleDate(_window, 0, 0), Qt::Dialog);
+	sub->resize(MainWindow::width, 100);
+	sub->show();
 }
 
 void SideBar::addOSModule() {
 
-	_window->addNewModule(new GModuleOS(_window, rand() % 1400, rand() % 1000));
+	QMdiSubWindow *sub = _window->getArea()->addSubWindow(new GModuleOS(_window, 0, 0), Qt::Dialog);
+	sub->resize(MainWindow::width, 100);
+	sub->show();
 }

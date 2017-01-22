@@ -20,6 +20,7 @@
 # include <QWindowStateChangeEvent> 
 # include <QDockWidget>
 # include <QString>
+# include <QMdiSubWindow>
 
 # include "IMonitorModule.hpp"
 
@@ -29,7 +30,7 @@ class GModule : public QDockWidget {
 	private:
 
 	protected:
-		QWidget *_widget;
+		// QWidget *_widget;
 		IMonitorModule *_monitorModule;
 		QString _name;
 		int _x;
@@ -37,6 +38,7 @@ class GModule : public QDockWidget {
 		int _width;
 		int _height;
 		bool _closed;
+		QMdiSubWindow *_sub;
 
 	public:
 		GModule(QString const &, QWidget *, int, int, int, int);
@@ -44,8 +46,10 @@ class GModule : public QDockWidget {
 		GModule &operator=(GModule const &);
 		virtual ~GModule();
 
-		virtual void keyPressEvent(QKeyEvent *) override;
+		// virtual void keyPressEvent(QKeyEvent *) override;
 		// virtual bool event(QEvent *) override;
+		// 
+		void setSubWindow(QMdiSubWindow *);
 };
 
 #endif /* !MODULE_H_ */

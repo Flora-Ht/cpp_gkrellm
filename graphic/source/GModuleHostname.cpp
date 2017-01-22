@@ -15,7 +15,7 @@
 #include "GModuleHostname.hpp"
 
 GModuleHostname::GModuleHostname(QWidget *parent, int x, int y)
-	: GModule("HostName", parent, x, y, 200, 100),
+	: GModule("HostName", parent, x, y, 300, 200),
 	_labelHost(new QLabel("", this)),
 	_labelUser(new QLabel("", this)) {
 		
@@ -28,6 +28,8 @@ GModuleHostname::GModuleHostname(QWidget *parent, int x, int y)
 			_labelUser->setText("An error has occured.");
 		}
 		
+		QWidget *wid = new QWidget(this);
+		QVBoxLayout* layout = new QVBoxLayout();
 		ModuleHostname *mod = static_cast<ModuleHostname *>(_monitorModule);
 		
 		QString hostName = QString::fromStdString(mod->getHost());
@@ -38,9 +40,16 @@ GModuleHostname::GModuleHostname(QWidget *parent, int x, int y)
 		_labelUser->setText(userName);
 		_labelUser->move(_width / 2 - userName.length() * 2, 60);
 		
-		_widget->resize(_width, _height);
+		layout->addWidget(_labelHost);
+		layout->addWidget(_labelUser);
+		wid->setLayout(layout);
+		// _widget->setLayout(layout);
+		
+		// _widget->resize(_width, _height);
+		// setWidget(_widget);
+		setWidget(wid);
 		show();
-		move(x, y);
+		// move(x, y);
 	}
 
 GModuleHostname::~GModuleHostname() {

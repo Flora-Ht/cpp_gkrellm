@@ -27,6 +27,9 @@ GModuleDate::GModuleDate(QWidget *parent, int x, int y)
 			_time->setText("An error has occured.");
 		}
 		
+		
+		QWidget *wid = new QWidget(this);
+		QVBoxLayout *layout = new QVBoxLayout();
 		ModuleDate *mod = static_cast<ModuleDate *>(_monitorModule);
 		
 		QTimer *timer = new QTimer(this);
@@ -41,9 +44,14 @@ GModuleDate::GModuleDate(QWidget *parent, int x, int y)
 		
 		updateModuleTime();
 		
-		_widget->resize(_width, _height);
+		layout->addWidget(_date);
+		layout->addWidget(_time);
+		wid->setLayout(layout);
+		
+		setWidget(wid);
+		// _widget->resize(_width, _height);
 		show();
-		move(x, y);
+		// move(x, y);
 	}
 
 GModuleDate::~GModuleDate() {
@@ -81,7 +89,7 @@ void GModuleDate::updateModuleTime() {
 		_time->setText(time);
 		_time->move(_width / 2 - time.length() * 2, 60);
 		update();
-		repaint();
-		show();
+		// repaint();
+		// show();
 	}
 }

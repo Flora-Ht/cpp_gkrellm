@@ -16,6 +16,7 @@
 # define GMODULEOS_H_
 
 # include <QLabel>
+# include <QVBoxLayout>
 # include "GModule.hpp"
 # include "ModuleOS.hpp"
 

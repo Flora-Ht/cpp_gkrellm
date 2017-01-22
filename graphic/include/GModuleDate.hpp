@@ -17,6 +17,7 @@
 
 # include <QLabel>
 # include <QTimer>
+# include <QVBoxLayout>
 # include <sstream>
 # include "GModule.hpp"
 # include "ModuleDate.hpp"

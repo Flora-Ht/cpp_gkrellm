@@ -16,30 +16,30 @@
 
 GModule::GModule(QString const &name, QWidget *parent, int x, int y, int width, int height)
 	: QDockWidget(name, parent, Qt::Dialog | Qt::CustomizeWindowHint),
-	_widget(new QWidget(this, Qt::Window)), _monitorModule(nullptr),
+	_monitorModule(nullptr),
 	_name(name), _x(x), _y(y), _width(width), _height(height), _closed(false) {
 
 		setFocusPolicy(Qt::StrongFocus);
 		// setFeatures(QDockWidget::DockWidgetMovable);
 
-		_widget->setWindowTitle(name);
-		_widget->resize(_width, _height);
+		// _widget->setWindowTitle(name);
+		// _widget->resize(_width, _height);
 	}
 
 GModule::GModule(GModule const &other)
-	: QDockWidget(other._name, other.parentWidget(), Qt::Window),
-	_widget(other._widget), _monitorModule(other._monitorModule),
+	: QDockWidget(other._name, other.parentWidget(), Qt::Dialog),
+	 _monitorModule(other._monitorModule),
 	_name(other._name), _x(other._x), _y(other._y), _width(other._width), _height(other._height) {
 
 		setFocusPolicy(Qt::StrongFocus);
-		
-		_widget->setWindowTitle(_name);
+
+		// _widget->setWindowTitle(_name);
 	}
 
 GModule &GModule::operator=(GModule const &other) {
 
 	GModule tmp(other);
-	std::swap(_widget, tmp._widget);
+	// std::swap(_widget, tmp._widget);
 	std::swap(_monitorModule, tmp._monitorModule);
 	std::swap(_name, tmp._name);
 	std::swap(_x, tmp._x);
@@ -52,18 +52,23 @@ GModule &GModule::operator=(GModule const &other) {
 
 GModule::~GModule() {
 	
-	delete _widget;
+	// delete _widget;
 	delete _monitorModule;
 }
 
 /* ===================================================================================== */
 
-void GModule::keyPressEvent(QKeyEvent *event) {
-	if (event->key() == Qt::Key_A) {
-		close();
-		_closed = true;
-	}
-	QWidget::keyPressEvent(event);
+// void GModule::keyPressEvent(QKeyEvent *event) {
+// 	if (event->key() == Qt::Key_A) {
+// 		close();
+// 		_closed = true;
+// 	}
+// 	QWidget::keyPressEvent(event);
+// }
+
+void GModule::setSubWindow(QMdiSubWindow *win) {
+
+	_sub = win;
 }
 
 // bool GModule::event(QEvent *event) {

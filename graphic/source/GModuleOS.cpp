@@ -28,6 +28,8 @@ GModuleOS::GModuleOS(QWidget *parent, int x, int y)
 			_version->setText("An error has occured.");
 		}
 		
+		QWidget *wid = new QWidget(this);
+		QVBoxLayout *layout = new QVBoxLayout();
 		ModuleOS *mod = static_cast<ModuleOS *>(_monitorModule);
 		
 		QString os = QString::fromStdString(mod->getOS());
@@ -38,9 +40,13 @@ GModuleOS::GModuleOS(QWidget *parent, int x, int y)
 		_version->setText(version);
 		_version->move(_width / 2 - version.length() * 2, 60);
 		
-		_widget->resize(_width, _height);
+		layout->addWidget(_os);
+		layout->addWidget(_version);
+		wid->setLayout(layout);
+		setWidget(wid);
+		// _widget->resize(_width, _height);
 		show();
-		move(x, y);
+		// move(x, y);
 	}
 
 GModuleOS::~GModuleOS() {
