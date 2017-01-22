@@ -15,6 +15,8 @@
 #ifndef MODULE_H_
 # define MODULE_H_
 
+# include <iostream>
+# include <sstream>
 # include <QDockWidget>
 # include <QEvent>
 # include <QKeyEvent>

@@ -17,7 +17,6 @@
 
 # include <QProgressBar>
 # include <QTimer>
-# include <sstream>
 # include "GModule.hpp"
 # include "ModuleRAM.hpp"
 

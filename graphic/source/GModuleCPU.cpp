@@ -18,15 +18,24 @@ GModuleCPU::GModuleCPU(QWidget *parent, int x, int y)
 	: GModule("CPUs", parent, x, y, 300, 200) {
 		_bars = new std::vector<QProgressBar *>;
 		
+		QWidget *wid = new QWidget(this);
+		QVBoxLayout *layout = new QVBoxLayout();
+		
 		_monitorModule = new ModuleCPU();
 		try {
 			_monitorModule->retrieveInformations();
 		}
 		catch (ModuleException &e) {
+			std::stringstream s;
+			s << "Error: ModuleCPU: " << e.what();
+			QLabel *error = new QLabel(QString::fromStdString(s.str()));
+			layout->addWidget(error);
+			wid->setLayout(layout);
+			setWidget(wid);
+			show();
+			return ;
 		}
 		
-		QWidget *wid = new QWidget(this);
-		_layout = new QVBoxLayout();
 		ModuleCPU *mod = static_cast<ModuleCPU *>(_monitorModule);
 		
 		std::vector<CPU> cpus = mod->getCPUs();
@@ -50,15 +59,15 @@ GModuleCPU::GModuleCPU(QWidget *parent, int x, int y)
 			percent->setValue((int)it->_percent);
 			_bars->push_back(percent);
 			
-			_layout->addWidget(percent);
+			layout->addWidget(percent);
 			
 			label->setText(QString::fromStdString(ss.str()));
 			label->move(0, 30 * (i + 1));
-			_layout->addWidget(label);
+			layout->addWidget(label);
 			++i;
 		}
 		
-		wid->setLayout(_layout);
+		wid->setLayout(layout);
 		
 		setWidget(wid);
 		show();
@@ -66,7 +75,6 @@ GModuleCPU::GModuleCPU(QWidget *parent, int x, int y)
 
 GModuleCPU::~GModuleCPU() {
 	
-	delete _layout;
 	delete _bars;
 }
 
@@ -78,6 +86,7 @@ void GModuleCPU::updatePercentBars() {
 		mod->retrieveInformations();
 	}
 	catch (ModuleException &e) {
+		return ;
 	}
 	
 	std::vector<CPU> cpus = mod->getCPUs();

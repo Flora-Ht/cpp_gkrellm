@@ -17,15 +17,24 @@
 GModuleRAM::GModuleRAM(QWidget *parent, int x, int y)
 	: GModule("RAM", parent, x, y, 300, 200) {
 
+		QWidget *wid = new QWidget(this);
+		QVBoxLayout *layout = new QVBoxLayout();
+		
 		_monitorModule = new ModuleRAM();
 		try {
 			_monitorModule->retrieveInformations();
 		}
 		catch (ModuleException &e) {
+			std::stringstream s;
+			s << "Error: ModuleRAM: " << e.what();
+			QLabel *error = new QLabel(QString::fromStdString(s.str()));
+			layout->addWidget(error);
+			wid->setLayout(layout);
+			setWidget(wid);
+			show();
+			return ;
 		}
 
-		QWidget *wid = new QWidget(this);
-		QVBoxLayout *layout = new QVBoxLayout();
 		ModuleRAM *mod = static_cast<ModuleRAM *>(_monitorModule);
 
 		QTimer *timer = new QTimer(this);
@@ -79,6 +88,7 @@ void GModuleRAM::updateBars() {
 		mod->retrieveInformations();
 	}
 	catch (ModuleException &e) {
+		return ;
 	}
 
 	double percentRam = (((float)mod->getTotalRam() - (float)mod->getFreeRam() - (float)mod->getBufferRam()) / (float)mod->getTotalRam()) * 100;

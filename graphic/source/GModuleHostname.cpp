@@ -19,17 +19,24 @@ GModuleHostname::GModuleHostname(QWidget *parent, int x, int y)
 	_labelHost(new QLabel("", this)),
 	_labelUser(new QLabel("", this)) {
 		
+		QWidget *wid = new QWidget(this);
+		QVBoxLayout* layout = new QVBoxLayout();
+		
 		_monitorModule = new ModuleHostname();
 		try {
 			_monitorModule->retrieveInformations();
 		}
 		catch (ModuleException &e) {
-			_labelHost->setText("An error has occured.");
-			_labelUser->setText("An error has occured.");
+			std::stringstream s;
+			s << "Error: ModuleHostname: " << e.what();
+			QLabel *error = new QLabel(QString::fromStdString(s.str()));
+			layout->addWidget(error);
+			wid->setLayout(layout);
+			setWidget(wid);
+			show();
+			return ;
 		}
 		
-		QWidget *wid = new QWidget(this);
-		QVBoxLayout* layout = new QVBoxLayout();
 		ModuleHostname *mod = static_cast<ModuleHostname *>(_monitorModule);
 		
 		QString hostName = QString::fromStdString(mod->getHost());

@@ -18,18 +18,24 @@ GModuleDate::GModuleDate(QWidget *parent, int x, int y)
 	: GModule("Date & Time", parent, x, y, 200, 100),
 	_date(new QLabel("", this)), _time(new QLabel("", this)) {
 
+		QWidget *wid = new QWidget(this);
+		QVBoxLayout *layout = new QVBoxLayout();
+		
 		_monitorModule = new ModuleDate();
 		try {
 			_monitorModule->retrieveInformations();
 		}
 		catch (ModuleException &e) {
-			_date->setText("An error has occured.");
-			_time->setText("An error has occured.");
+			std::stringstream s;
+			s << "Error: ModuleDateTime: " << e.what();
+			QLabel *error = new QLabel(QString::fromStdString(s.str()));
+			layout->addWidget(error);
+			wid->setLayout(layout);
+			setWidget(wid);
+			show();
+			return ;
 		}
 		
-		
-		QWidget *wid = new QWidget(this);
-		QVBoxLayout *layout = new QVBoxLayout();
 		ModuleDate *mod = static_cast<ModuleDate *>(_monitorModule);
 		
 		QTimer *timer = new QTimer(this);
@@ -71,9 +77,13 @@ void GModuleDate::updateModuleTime() {
 		catch (ModuleException &e) {
 			_date->setText("An error has occured.");
 			_time->setText("An error has occured.");
+			return ;
 		}
 
 		std::stringstream ss;
+		if (mod->getHour() < 10) {
+			ss << "0";
+		}
 		ss << mod->getHour() << ":";
 		if (mod->getMinute() < 10) {
 			ss << "0";

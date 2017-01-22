@@ -17,7 +17,6 @@
 
 # include <QTimer>
 # include <QProgressBar>
-# include <sstream>
 # include <vector>
 # include "GModule.hpp"
 # include "ModuleCPU.hpp"
@@ -26,7 +25,6 @@ class GModuleCPU : public GModule {
 	Q_OBJECT
 
 	private:
-		QVBoxLayout *_layout;
 		std::vector<QProgressBar *> *_bars;
 
 	protected:

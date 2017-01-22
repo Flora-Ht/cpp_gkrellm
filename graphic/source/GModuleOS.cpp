@@ -19,17 +19,24 @@ GModuleOS::GModuleOS(QWidget *parent, int x, int y)
 	_os(new QLabel("", this)),
 	_version(new QLabel("", this)) {
 		
+		QWidget *wid = new QWidget(this);
+		QVBoxLayout *layout = new QVBoxLayout();
+		
 		_monitorModule = new ModuleOS();
 		try {
 			_monitorModule->retrieveInformations();
 		}
 		catch (ModuleException &e) {
-			_os->setText("An error has occured.");
-			_version->setText("An error has occured.");
+			std::stringstream s;
+			s << "Error: ModuleOS: " << e.what();
+			QLabel *error = new QLabel(QString::fromStdString(s.str()));
+			layout->addWidget(error);
+			wid->setLayout(layout);
+			setWidget(wid);
+			show();
+			return ;
 		}
 		
-		QWidget *wid = new QWidget(this);
-		QVBoxLayout *layout = new QVBoxLayout();
 		ModuleOS *mod = static_cast<ModuleOS *>(_monitorModule);
 		
 		QString os = QString::fromStdString(mod->getOS());
