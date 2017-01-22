@@ -78,6 +78,10 @@ GModuleRAM::GModuleRAM(QWidget *parent, int x, int y)
 
 GModuleRAM::~GModuleRAM() {
 
+	delete _ram;
+	delete _freeRam;
+	delete _swap;
+	delete _freeSwap;
 }
 
 void GModuleRAM::updateBars() {
