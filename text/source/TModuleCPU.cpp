@@ -5,7 +5,7 @@
 // Login   <guitta_l@epitech.eu>
 //
 // Started on  Sun Jan 22 01:06:24 2017 Louis Guittard
-// Last update Sun Jan 22 05:13:46 2017 Louis Guittard
+// Last update Sun Jan 22 05:35:00 2017 Louis Guittard
 //
 
 #include "TModuleCPU.hpp"
@@ -59,7 +59,6 @@ void					TModuleCPU::drawContent() const
              mvprintw(_y + (_height * i) / 4 + 1, _x + 1, it->_name.c_str());
              mvprintw(_y + (_height * i) / 4 + 1, _x + 15 + it->_name.size(), "%f mhz", it->_mhz);
              mvprintw(_y + (_height * i) / 4 + 2, _x + 1, it->_vendor.c_str());
-             mvprintw(_y + (_height * i) / 4 + 2, _x + 1, "%f", it->_percent);
              j = 0;
              attron(COLOR_PAIR(2));
              length = this->_width - it->_vendor.size() - 6;
