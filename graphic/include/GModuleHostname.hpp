@@ -15,9 +15,6 @@
 #ifndef GMODULEHOSTNAME_H_
 # define GMODULEHOSTNAME_H_
 
-# include <QLabel>
-# include <QVBoxLayout>
-# include "MainWindow.hpp"
 # include "GModule.hpp"
 # include "ModuleHostname.hpp"
 

@@ -43,10 +43,9 @@ GModuleOS::GModuleOS(QWidget *parent, int x, int y)
 		layout->addWidget(_os);
 		layout->addWidget(_version);
 		wid->setLayout(layout);
+		
 		setWidget(wid);
-		// _widget->resize(_width, _height);
 		show();
-		// move(x, y);
 	}
 
 GModuleOS::~GModuleOS() {

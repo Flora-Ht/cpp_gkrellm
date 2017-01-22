@@ -15,9 +15,7 @@
 #ifndef GMODULEDATE_H_
 # define GMODULEDATE_H_
 
-# include <QLabel>
 # include <QTimer>
-# include <QVBoxLayout>
 # include <sstream>
 # include "GModule.hpp"
 # include "ModuleDate.hpp"

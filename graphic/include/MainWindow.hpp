@@ -29,6 +29,7 @@
 # include "GModuleHostname.hpp"
 # include "GModuleDate.hpp"
 # include "GModuleOS.hpp"
+# include "GModuleCPU.hpp"
 
 class QStatusBar;
 
@@ -52,7 +53,6 @@ class MainWindow : public QMainWindow {
 		virtual void keyPressEvent(QKeyEvent *) override;
 		
 		QMdiArea *getArea() const;
-		void addNewModule(GModule *);
 };
 
 #endif /* !MAINWINDOW_H_ */

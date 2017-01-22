@@ -43,13 +43,9 @@ GModuleHostname::GModuleHostname(QWidget *parent, int x, int y)
 		layout->addWidget(_labelHost);
 		layout->addWidget(_labelUser);
 		wid->setLayout(layout);
-		// _widget->setLayout(layout);
 		
-		// _widget->resize(_width, _height);
-		// setWidget(_widget);
 		setWidget(wid);
 		show();
-		// move(x, y);
 	}
 
 GModuleHostname::~GModuleHostname() {

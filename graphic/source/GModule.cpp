@@ -20,10 +20,6 @@ GModule::GModule(QString const &name, QWidget *parent, int x, int y, int width, 
 	_name(name), _x(x), _y(y), _width(width), _height(height), _closed(false) {
 
 		setFocusPolicy(Qt::StrongFocus);
-		// setFeatures(QDockWidget::DockWidgetMovable);
-
-		// _widget->setWindowTitle(name);
-		// _widget->resize(_width, _height);
 	}
 
 GModule::GModule(GModule const &other)
@@ -32,14 +28,11 @@ GModule::GModule(GModule const &other)
 	_name(other._name), _x(other._x), _y(other._y), _width(other._width), _height(other._height) {
 
 		setFocusPolicy(Qt::StrongFocus);
-
-		// _widget->setWindowTitle(_name);
 	}
 
 GModule &GModule::operator=(GModule const &other) {
 
 	GModule tmp(other);
-	// std::swap(_widget, tmp._widget);
 	std::swap(_monitorModule, tmp._monitorModule);
 	std::swap(_name, tmp._name);
 	std::swap(_x, tmp._x);
@@ -52,7 +45,6 @@ GModule &GModule::operator=(GModule const &other) {
 
 GModule::~GModule() {
 	
-	// delete _widget;
 	delete _monitorModule;
 }
 
@@ -65,11 +57,6 @@ GModule::~GModule() {
 // 	}
 // 	QWidget::keyPressEvent(event);
 // }
-
-void GModule::setSubWindow(QMdiSubWindow *win) {
-
-	_sub = win;
-}
 
 // bool GModule::event(QEvent *event) {
 //

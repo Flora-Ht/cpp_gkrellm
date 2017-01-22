@@ -26,18 +26,15 @@ MainWindow::MainWindow()
 
 		setCentralWidget(_area);
 		QMdiSubWindow *sideBar = _area->addSubWindow(new SideBar(this, this), Qt::Dialog);
-		sideBar->resize(MainWindow::width, 150);
+		sideBar->resize(MainWindow::width, 175);
 		QMdiSubWindow *sub = _area->addSubWindow(new GModuleHostname(this, 0, 0), Qt::Dialog);
 		sub->resize(MainWindow::width, 100);
 		QMdiSubWindow *sub2 = _area->addSubWindow(new GModuleDate(this, 0, 0), Qt::Dialog);
 		sub2->resize(MainWindow::width, 100);
 		QMdiSubWindow *sub3 = _area->addSubWindow(new GModuleOS(this, 0, 0), Qt::Dialog);
 		sub3->resize(MainWindow::width, 100);
-		// _area->addSubWindow(new GModuleHostname(this, 2, 40), Qt::Dialog);
-		// addDockWidget(Qt::LeftDockWidgetArea, new SideBar(this, this));
-		// addDockWidget(Qt::LeftDockWidgetArea, new GModuleHostname(this, 2, 40));
-		// addDockWidget(Qt::RightDockWidgetArea, new GModuleDate(this, 2, 140));
-		// addDockWidget(Qt::RightDockWidgetArea, new GModuleOS(this, 2, 240));
+		QMdiSubWindow *sub4 = _area->addSubWindow(new GModuleCPU(this, 0, 0), Qt::Dialog);
+		sub4->resize(MainWindow::width, 200);
 	}
 
 MainWindow::~MainWindow() {
@@ -48,16 +45,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
 		close();
 	}
 	QMainWindow::keyPressEvent(event);
-}
-
-void MainWindow::addNewModule(GModule *mod) {
-
-	(void)mod;
-	std::cout << "New module asked." << std::endl;
-	// addDockWidget(Qt::LeftDockWidgetArea, mod);
-	// QMdiSubWindow *sub = _area->addSubWindow(new GModuleOS(this, 0, 0), Qt::Dialog);
-	// sub->resize(MainWindow::width, 100);
-	update();
 }
 
 QMdiArea *MainWindow::getArea() const {

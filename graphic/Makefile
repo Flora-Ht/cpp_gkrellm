@@ -27,14 +27,16 @@ SOURCES		= main.cpp \
 			  GModule.cpp \
 			  GModuleHostname.cpp \
 			  GModuleDate.cpp \
-			  GModuleOS.cpp
+			  GModuleOS.cpp \
+			  GModuleCPU.cpp
 
 HPPFILES	= MainWindow.hpp \
 			  SideBar.hpp \
 			  GModule.hpp \
 			  GModuleHostname.hpp \
 			  GModuleDate.hpp \
-			  GModuleOS.hpp
+			  GModuleOS.hpp \
+			  GModuleCPU.hpp
 
 SOURCES 	:= $(addprefix $(SRCDIR)/, $(SOURCES))
 HPPFILES	:= $(addprefix $(INCDIR)/, $(HPPFILES))

@@ -49,9 +49,7 @@ GModuleDate::GModuleDate(QWidget *parent, int x, int y)
 		wid->setLayout(layout);
 		
 		setWidget(wid);
-		// _widget->resize(_width, _height);
 		show();
-		// move(x, y);
 	}
 
 GModuleDate::~GModuleDate() {
@@ -89,7 +87,5 @@ void GModuleDate::updateModuleTime() {
 		_time->setText(time);
 		_time->move(_width / 2 - time.length() * 2, 60);
 		update();
-		// repaint();
-		// show();
 	}
 }
