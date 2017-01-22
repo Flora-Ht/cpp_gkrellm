@@ -75,8 +75,6 @@ void GModuleDate::updateModuleTime() {
 			mod->retrieveInformations();
 		}
 		catch (ModuleException &e) {
-			_date->setText("An error has occured.");
-			_time->setText("An error has occured.");
 			return ;
 		}
 
