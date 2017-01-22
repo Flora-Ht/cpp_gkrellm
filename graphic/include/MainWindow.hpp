@@ -21,6 +21,7 @@
 # include <QLabel>
 # include <QStatusBar>
 # include <QWidget>
+# include <QMdiArea>
 
 # include "SideBar.hpp"
 # include "GModule.hpp"

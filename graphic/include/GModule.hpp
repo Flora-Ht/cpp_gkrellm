@@ -18,8 +18,6 @@
 # include <QKeyEvent>
 # include <QEvent>
 # include <QWindowStateChangeEvent> 
-# include <QHBoxLayout>
-# include <QWidget>
 # include <QDockWidget>
 # include <QString>
 
